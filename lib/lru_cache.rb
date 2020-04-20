@@ -17,10 +17,32 @@ class LRU_Cache
     end
 
     def add(ele)
+        # adding an element that is already in the cache
+        if @cache.include?(ele)
+            if @cache.include?(nil) #partially full cache
+                @cache.delete(ele)
+                @cache << nil
+                @cache[@cache.index(nil)] = ele
+            else # full cache
+                @cache.delete(ele)
+                @cache << ele
+            end
+        else
+            # adding a new element to the cache
+            if @cache.include?(nil)
+                @cache[@cache.index(nil)] = ele
+            else
+                @cache.shift
+                @cache << ele
+            end
+        end
     end
 
     def show
+        @cache
     end
 
-    private
+    def empty?
+        @cache.all?{ |ele| ele == nil}
+    end
 end
