@@ -4,11 +4,16 @@
 # We will allow the user to set the size of the cache
 
 class LRU_Cache
-    def initialize (size = 4)
-        @size = size
+    def initialize (cache_size = 4)
+        @cache = Array.new(cache_size)
+    end
+
+    def size
+        @cache.length
     end
 
     def count
+        @cache.select{ |ele| ele != nil}.length
     end
 
     def add(ele)
