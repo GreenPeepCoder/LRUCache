@@ -16,11 +16,14 @@ describe LRU_Cache do
     end
 
     describe "#count" do
+        it 'should return the number of elements currently stored in our LRU cache'
     end
 
     describe "#add" do
+        it 'should be able to add elements to the cache, even if they differ in type'
     end
 
     describe "#show" do
+        it 'should show the elements currently stored in our LRU cache'
     end
 end
